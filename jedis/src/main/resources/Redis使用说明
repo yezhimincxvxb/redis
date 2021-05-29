@@ -1,0 +1,78 @@
+### 概述
+基于内存操作的数据库
+
+### 依赖
+<dependency>
+    <groupId>redis.clients</groupId>
+    <artifactId>jedis</artifactId>
+</dependency>
+
+### 配置文件
+redis:
+    # 是否启动Redis缓存
+    enable: true
+    # IP
+    host: 127.0.0.1
+    # 端口
+    port: 6379
+    # 密码，没有设置密码，为空即可
+    password: 123456
+    # 连接超时
+    timeout: 5000
+    # 最大连接数
+    maxTotal: 256
+    # 最大空闲连接数
+    maxIdle: 64
+    # 最大等待毫秒数
+    maxWaitMillis: 5000
+    # 选择数据库
+    index: 0
+
+### RedisConfig
+
+### RedisUtils
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
