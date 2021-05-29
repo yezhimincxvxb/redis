@@ -33,9 +33,9 @@ public class RedisUtils {
     private Environment environment; // 可以读取配置文件的属性
 
     @Value("${redis.index}")
-    private Integer INDEX;
+    private Integer index;
 
-    @Resource(name = "getJedisPool")
+    @Resource(name = "jedPool")
     @Lazy
     private JedisPool jedisPool;
     private Jedis jedis;
@@ -55,7 +55,7 @@ public class RedisUtils {
     @PostConstruct
     public void init() {
 //        System.out.println(environment.getProperty("redis.index"));
-        init(INDEX);
+        init(index);
     }
 
     // 自定义选择数据库

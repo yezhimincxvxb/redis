@@ -20,6 +20,7 @@
         <module>base</module>
         <module>jedis</module>
         <module>lock</module>
+        <module>master_slave</module>
     </modules>
 
     <properties>

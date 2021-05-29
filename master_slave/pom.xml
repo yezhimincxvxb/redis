@@ -10,24 +10,22 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>jedis</artifactId>
+    <artifactId>master_slave</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>jedis</name>
+    <name>master_slave</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
-        <!-- Jedis -->
+        <!-- RedisTemplate -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- redis集群使用 -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-        </dependency>
-
-        <!-- expiringmap -->
-        <dependency>
-            <groupId>net.jodah</groupId>
-            <artifactId>expiringmap</artifactId>
-            <version>0.5.8</version>
         </dependency>
     </dependencies>
 

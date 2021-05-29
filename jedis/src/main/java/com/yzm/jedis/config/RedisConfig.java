@@ -25,9 +25,9 @@ public class RedisConfig {
     private int maxIdle;
     private int maxWaitMillis;
 
-    @Bean(name = "jedisPoolConfig")
+    @Bean(name = "jedPoolConf")
     @Lazy
-    public JedisPoolConfig jedisPoolConfig() {
+    public JedisPoolConfig jedPoolConf() {
         JedisPoolConfig config = new JedisPoolConfig();
         // 最大连接数, 默认8个
         config.setMaxTotal(maxTotal);
@@ -42,9 +42,9 @@ public class RedisConfig {
         return config;
     }
 
-    @Bean(name = "getJedisPool")
+    @Bean(name = "jedPool")
     @Lazy
-    public JedisPool getJedisPool(@Qualifier("jedisPoolConfig") JedisPoolConfig config) {
+    public JedisPool jedPool(@Qualifier("jedPoolConf") JedisPoolConfig config) {
         return new JedisPool(config, host, port, timeout, StringUtils.hasLength(password) ? password : null);
     }
 
