@@ -21,6 +21,8 @@
         <module>jedis</module>
         <module>lock</module>
         <module>master_slave</module>
+        <module>sentinel</module>
+        <module>cluster</module>
     </modules>
 
     <properties>
