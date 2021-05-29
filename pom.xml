@@ -18,6 +18,8 @@
 
     <modules>
         <module>base</module>
+        <module>jedis</module>
+        <module>lock</module>
     </modules>
 
     <properties>

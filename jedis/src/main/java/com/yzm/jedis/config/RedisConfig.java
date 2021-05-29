@@ -45,7 +45,7 @@ public class RedisConfig {
     @Bean(name = "getJedisPool")
     @Lazy
     public JedisPool getJedisPool(@Qualifier("jedisPoolConfig") JedisPoolConfig config) {
-        return new JedisPool(config, host, port, timeout, StringUtils.isEmpty(password) ? null : password);
+        return new JedisPool(config, host, port, timeout, StringUtils.hasLength(password) ? password : null);
     }
 
 }
