@@ -23,6 +23,7 @@
         <module>master_slave</module>
         <module>sentinel</module>
         <module>cluster</module>
+        <module>redisson</module>
     </modules>
 
     <properties>
