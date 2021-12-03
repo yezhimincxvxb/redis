@@ -13,10 +13,14 @@
     <groupId>com.yzm</groupId>
     <artifactId>redis</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>redis</name>
     <description>Demo project for Spring Boot</description>
 
     <modules>
+        <module>redis01</module>
+        <module>redis02</module>
+        <module>redis03</module>
         <module>base</module>
         <module>jedis</module>
         <module>lock</module>
