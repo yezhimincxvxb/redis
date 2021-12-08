@@ -21,10 +21,9 @@
         <module>redis01</module>
         <module>redis02</module>
         <module>redis03</module>
-        <module>base</module>
-        <module>jedis</module>
+        <module>redis04</module>
+        <module>redis05</module>
         <module>lock</module>
-        <module>master_slave</module>
         <module>sentinel</module>
         <module>cluster</module>
         <module>redisson</module>
@@ -51,31 +50,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-
-        <!-- mysql -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- mybatis-plus -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.3.2</version>
-        </dependency>
-        <!-- 代码自动生成器 -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.3.2</version>
-        </dependency>
-        <!-- freemarker模板 -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.30</version>
         </dependency>
     </dependencies>
 

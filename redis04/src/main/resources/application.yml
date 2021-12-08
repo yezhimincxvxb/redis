@@ -1,0 +1,10 @@
+redis:
+  enable: true
+  host: 192.168.8.128
+  port: 6379
+  password: 1234
+  timeout: 5000
+  maxTotal: 256
+  maxIdle: 64
+  maxWaitMillis: 5000
+  index: 0

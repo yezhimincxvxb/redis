@@ -10,42 +10,24 @@
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
     </parent>
 
-    <artifactId>lock</artifactId>
+    <artifactId>redis04</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>lock</name>
+    <name>redis04</name>
     <description>Demo project for Spring Boot</description>
 
     <dependencies>
-        <!-- RedisTemplate -->
+        <!-- Jedis -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
         </dependency>
 
-        <!-- mysql -->
+        <!-- expiringmap -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- mybatis-plus -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.3.2</version>
-        </dependency>
-        <!-- 代码自动生成器 -->
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.3.2</version>
-        </dependency>
-        <!-- freemarker模板 -->
-        <dependency>
-            <groupId>org.freemarker</groupId>
-            <artifactId>freemarker</artifactId>
-            <version>2.3.30</version>
+            <groupId>net.jodah</groupId>
+            <artifactId>expiringmap</artifactId>
+            <version>0.5.8</version>
         </dependency>
     </dependencies>
 
