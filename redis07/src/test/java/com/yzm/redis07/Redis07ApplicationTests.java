@@ -1,10 +1,10 @@
-package com.yzm.cluster;
+package com.yzm.redis07;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ClusterApplicationTests {
+class Redis07ApplicationTests {
 
     @Test
     void contextLoads() {

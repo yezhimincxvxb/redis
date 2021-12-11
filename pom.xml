@@ -24,8 +24,8 @@
         <module>redis04</module>
         <module>redis05</module>
         <module>redis06</module>
+        <module>redis07</module>
         <module>lock</module>
-        <module>sentinel</module>
         <module>cluster</module>
         <module>redisson</module>
     </modules>
