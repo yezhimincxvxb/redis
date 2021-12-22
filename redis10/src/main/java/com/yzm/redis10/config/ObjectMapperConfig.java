@@ -8,25 +8,22 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Configuration
 public class ObjectMapperConfig {
 
+    public static final ObjectMapper objectMapper;
     private static final String PATTERN = "yyyy-MM-dd HH:mm:ss";
 
-    @Bean(name = "myObjectMapper")
-    public ObjectMapper objectMapper() {
+    static {
         JavaTimeModule javaTimeModule = new JavaTimeModule();
         javaTimeModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
         javaTimeModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
-        return new ObjectMapper()
+        objectMapper = new ObjectMapper()
                 // 转换为格式化的json(控制台打印时，自动格式化规范)
                 //.enable(SerializationFeature.INDENT_OUTPUT)
                 // Include.ALWAYS  是序列化对像所有属性(默认)
@@ -47,7 +44,7 @@ public class ObjectMapperConfig {
                 .setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY)
                 // 此项必须配置，否则会报java.lang.ClassCastException: java.util.LinkedHashMap cannot be cast to XXX
                 .enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY)
-                ;
+        ;
     }
 
     static class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> {

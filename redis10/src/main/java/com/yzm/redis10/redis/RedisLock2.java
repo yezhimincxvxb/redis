@@ -35,17 +35,23 @@ public class RedisLock2 {
         }
 
         //加锁
-        if (!lock(LOCK_PREFIX + productId, UUID.randomUUID().toString())) {
+        String uuid = UUID.randomUUID().toString();
+        if (!lock(LOCK_PREFIX + productId, uuid)) {
             log.info("活动太火爆了，请稍后再操作");
             return;
         }
 
         //秒杀逻辑
-        product.setLeftNum(product.getLeftNum() - 1);
-        productService.updateById(product);
+        try {
+            product.setLeftNum(product.getLeftNum() - 1);
+            productService.updateById(product);
+            Thread.sleep(80);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         //解锁
-        unlock(LOCK_PREFIX + productId);
+        unlock(LOCK_PREFIX + productId, uuid);
         log.info("秒杀成功" + i.getAndIncrement());
     }
 
@@ -65,14 +71,13 @@ public class RedisLock2 {
     /**
      * 解锁
      */
-    public void unlock(String key) {
-        if (local.get().equals(redisTemplate.opsForValue().get(key))) {
+    public void unlock(String key, String value) {
+        String localValue = local.get();
+        if (localValue.equals(value) && localValue.equals(redisTemplate.opsForValue().get(key))) {
             log.info("解锁成功");
             redisTemplate.delete(key);
             local.remove();
-            return;
         }
-        log.info("锁过期");
     }
 
 }

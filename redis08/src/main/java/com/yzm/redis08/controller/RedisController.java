@@ -40,4 +40,9 @@ public class RedisController {
         redisTemplate.convertAndSend("user", user);
     }
 
+    @GetMapping("/zadd")
+    public void zadd() {
+        messageProducer.zadd();
+    }
+
 }
