@@ -1,4 +1,4 @@
-package com.yzm.redis08.config;
+package com.yzm.redis09.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;

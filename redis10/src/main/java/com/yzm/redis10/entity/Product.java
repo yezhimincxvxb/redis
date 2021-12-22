@@ -1,4 +1,4 @@
-package com.yzm.redis08.entity;
+package com.yzm.redis10.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

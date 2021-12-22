@@ -4,7 +4,7 @@ spring:
     port: 6379
     password: 1234
     database: 0
-    timeout: 60000
+    timeout: 4000
     jedis:
       pool:
         max-wait: -1

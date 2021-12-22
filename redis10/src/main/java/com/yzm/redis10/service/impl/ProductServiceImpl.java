@@ -1,7 +1,7 @@
-package com.yzm.redis08.service.impl;
+package com.yzm.redis10.service.impl;
 
-import com.yzm.redis08.entity.Product;
-import com.yzm.redis08.service.ProductService;
+import com.yzm.redis10.entity.Product;
+import com.yzm.redis10.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.yzm.redis08.service;
+package com.yzm.redis10.service;
 
-import com.yzm.redis08.entity.Product;
+import com.yzm.redis10.entity.Product;
 
 import java.util.List;
 

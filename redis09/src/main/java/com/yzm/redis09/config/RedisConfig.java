@@ -1,15 +1,9 @@
-package com.yzm.redis08.config;
+package com.yzm.redis09.config;
 
-import com.yzm.redis08.message.MySubscribe;
-import com.yzm.redis08.message.MySubscribe2;
-import com.yzm.redis08.message.MySubscribe3;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.listener.PatternTopic;
-import org.springframework.data.redis.listener.RedisMessageListenerContainer;
-import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -40,26 +34,6 @@ public class RedisConfig {
         template.afterPropertiesSet();
 
         return template;
-    }
-
-    /**
-     * redis消息监听器容器
-     */
-    @Bean
-    public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory) {
-        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
-        container.setConnectionFactory(connectionFactory);
-
-        //订阅频道，通配符*：表示任意多个占位符
-        container.addMessageListener(new MySubscribe(), new PatternTopic("channel*"));
-        // 通配符?：表示一个占位符
-        MessageListenerAdapter listenerAdapter = new MessageListenerAdapter(new MySubscribe2(), "getMessage");
-        listenerAdapter.afterPropertiesSet();
-        container.addMessageListener(listenerAdapter, new PatternTopic("channel?"));
-
-        container.addMessageListener(new MySubscribe3(), new PatternTopic("user"));
-
-        return container;
     }
 
 }

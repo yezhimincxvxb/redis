@@ -26,6 +26,8 @@
         <module>redis06</module>
         <module>redis07</module>
         <module>redis08</module>
+        <module>redis09</module>
+        <module>redis10</module>
         <module>redisson</module>
     </modules>
 
