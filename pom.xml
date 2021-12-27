@@ -28,6 +28,8 @@
         <module>redis08</module>
         <module>redis09</module>
         <module>redis10</module>
+        <module>redis11</module>
+        <module>redis12</module>
         <module>redisson</module>
     </modules>
 
