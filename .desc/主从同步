@@ -1,0 +1,49 @@
+redis-6381.conf(主)、redis-6382.conf、redis-6383.conf
+由于任意节点都可以升级为master节点，所以提前在redis-*.conf配置文件中添加：
+------------------------------------------内容--------------------------------------
+# 端口
+port 6381
+
+#绑定ip，外部可以访问此ip
+bind 192.168.101.129
+
+#关闭保护模式，允许外部访问
+protected-mode yes
+
+#授权密码
+requirepass 3Q3Q
+
+#守护进程，即后台启动
+daemonize yes
+
+#进程ID，默认/var/run/redis.pid
+pidfile /var/run/redis-6381.pid
+
+#日志文件
+loglevel notice
+logfile "/usr/local/redis/redis-6.2.4/logs/log-6381.log"
+
+#数据文件
+dir /usr/local/redis/redis-6.2.4/db/6381/
+dbfilename dump-6381.rdb
+
+#数据同步
+save 900 1
+save 300 10
+save 60 10000
+
+#master
+masterauth 3Q3Q
+# 挂载的主节点IP地址、端口；也可以在启动redis实例之后通过客户端配置
+#slaveof 192.168.101.129 6381
+------------------------------------------内容--------------------------------------
+
+当master节点挂了，手动选中任意slave节点执行
+192.168.101.129:6382> slaveof no one
+升级为master节点，其余节点通过
+192.168.101.129:6383> slaveof 192.168.101.129 6382
+重新挂载新的master节点
+
+redis客户端通过命令：info replication
+查看主从节点信息
+主节点读写、从节点只读

@@ -8,7 +8,7 @@ public interface UserService {
 
     User saveUser(User user);
 
-    User updateUser(User user);
+    int updateUser(User user);
 
     int deleteUser(Integer id);
 

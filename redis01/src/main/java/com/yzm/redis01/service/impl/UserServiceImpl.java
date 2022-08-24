@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @CachePut(key = "#user.id", unless = "#result eq null")
-    public User updateUser(User user) {
+    @CachePut(key = "#user.id", unless = "#result ne 1")
+    public int updateUser(User user) {
         log.info("更新数据");
         if (userMap.containsKey(user.getId())) {
             User update = userMap.get(user.getId());
@@ -54,13 +54,13 @@ public class UserServiceImpl implements UserService {
                     .setPassword(user.getPassword())
                     .setUpdateDate(LocalDateTime.now());
             userMap.replace(user.getId(), update);
-            return update;
+            return 1;
         }
-        return null;
+        return 0;
     }
 
     @Override
-    @CacheEvict(key = "#id", condition = "#result gt 0")
+    @CacheEvict(key = "#id", condition = "#result eq 1")
     public int deleteUser(Integer id) {
         log.info("删除数据");
         if (userMap.containsKey(id)) {
@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Cacheable(key = "#id", condition = "#id gt 1")
+    @Cacheable(key = "#id", condition = "#id ge 1") //
     public User getUserById(Integer id) {
         log.info("查询用户");
         return userMap.get(id);

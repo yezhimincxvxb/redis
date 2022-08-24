@@ -1,0 +1,79 @@
+### 在线下载
+wget http://download.redis.io/releases/redis-6.2.4.tar.gz
+
+### 安装步骤
+1.Redis运行需要C环境
+yum install gcc-c++
+
+2.解压
+cd /usr/local/redis/
+tar -zxvf redis-6.2.4.tar.gz
+
+3.编译
+cd redis-6.2.4 #进入解压后目录
+make
+
+4.安装
+cd src
+# PREFIX指定安装目录，默认安装在/usr/local/bin
+# 卸载Redis时，直接删除文件：/usr/local/redis
+make install PREFIX=/usr/local/redis/redis-6.2.4/
+
+5.创建目录，可自定义目录名称
+cd ../ #退回上级目录
+mkdir conf #配置文件目录
+mkdir logs #日志文件目录
+mkdir db  #数据文件目录
+
+6.配置文件拷贝到配置目录下，方便统一管理
+cp redis.conf ./conf/ #启动配置文件
+cp sentinel.conf ./conf/ #哨兵配置文件
+
+### 配置启动文件
+# 1.新建配置文件，也可以使用默认的redis.conf进行相应修改
+vim conf/redis-6380.conf
+------------------------------------------6380内容--------------------------------------
+#端口
+port 6380
+
+#绑定ip，外部可以访问此ip
+bind 192.168.192.128
+
+#关闭保护模式，允许外部访问
+protected-mode yes
+
+#授权密码
+requirepass 3Q3Q
+
+#守护进程，即后台启动
+daemonize yes
+
+#进程ID，默认/var/run/redis.pid
+pidfile /var/run/redis-6380.pid
+
+#日志文件
+loglevel notice
+logfile "/usr/local/redis/redis-6.2.4/logs/log-6380.log"
+
+#数据文件
+dir /usr/local/redis/redis-6.2.4/db/6380/
+dbfilename dump-6380.rdb
+------------------------------------------6380内容--------------------------------------
+### 启动
+启动，通过指定不同的 redis.conf，可以实现单机开启多Redis实例
+./bin/redis-server ./conf/redis-6380.conf
+
+查看进程
+ps -ef | grep redis
+
+打开客户端 -h ip地址，-p 端口，-a 密码
+./bin/redis-cli -h 192.168.192.128 -p 6380 -a 3Q3Q
+退出客户端
+quit
+
+结束redis进程
+pkill redis
+
+
+
+
